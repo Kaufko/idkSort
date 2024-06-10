@@ -1,7 +1,4 @@
-using Microsoft.VisualBasic.FileIO;
-using System.ComponentModel.Design;
-
-Random random = new Random();
+Random random = new Random(123);
 List<int> CreateRandomList(int size)
 {
     List<int> list = new List<int>();
@@ -18,12 +15,12 @@ int idkSort(List<int> list, int size)
     int tempIndex;
     int addIndex;
     if (size < 1000) addIndex = 10;
-    else addIndex = (int) Math.Pow(10, size.ToString().Length / 2);
+    else addIndex = (int)Math.Pow(10, size.ToString().Length / 2.55f);
 
     for (int i = 0; i < size; i++)
     {
         tempIndex = addIndex;
-        while(true)
+        while (true)
         {
             timesRan++;
             if (tempIndex < size && list[i] > list[tempIndex])
