@@ -1,3 +1,5 @@
+using Plotly.NET;
+
 Random random = new Random(123);
 List<int> CreateRandomList(int size)
 {
@@ -9,7 +11,7 @@ List<int> CreateRandomList(int size)
     return list;
 }
 
-int idkSort(List<int> list, int size)
+int IdkSort(List<int> list, int size)
 {
     int timesRan = 0;
     int tempIndex;
@@ -53,5 +55,31 @@ int idkSort(List<int> list, int size)
     }
     return timesRan;
 }
-int siz = 100000;
-Console.WriteLine(idkSort(CreateRandomList(siz), siz));
+
+int Sort(int size)
+{
+    int temp = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        temp += IdkSort(CreateRandomList(size), size);
+    }
+    Console.WriteLine(Convert.ToInt32((float)temp / 5));
+    return Convert.ToInt32((float)temp / 5);
+}
+
+
+int siz = 10000;
+
+List<int> resultList = new List<int>();
+
+for(int i = 1; i < siz; i++)
+{
+    resultList.Add(Sort(i));
+}
+
+Plotly.NET.CSharp.Chart.Point<int, int, string>(
+    x: resultList,
+    y: Enumerable.Range(1, siz).ToList()
+)
+.WithTraceInfo("IdkSort")
+.Show();
