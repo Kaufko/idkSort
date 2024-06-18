@@ -16,7 +16,7 @@ int IdkSort(List<int> list, int size)
     int timesRan = 0;
     int tempIndex;
     int addIndex;
-    if (size < 1000) addIndex = 10;
+    if (size < 500) addIndex = 10;
     else addIndex = (int)Math.Pow(10, size.ToString().Length / 2.55f);
 
     for (int i = 0; i < size; i++)
